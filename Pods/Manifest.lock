@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (5.0.0-rc.3)
+  - JVFloatLabeledTextField (1.2.2)
+  - Kingfisher (5.12.0):
+    - Kingfisher/Core (= 5.12.0)
+  - Kingfisher/Core (5.12.0)
+  - PureLayout (3.1.5)
+  - SwiftLint (0.38.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.3)
+  - JVFloatLabeledTextField
+  - Kingfisher (~> 5.0)
+  - PureLayout
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - JVFloatLabeledTextField
+    - Kingfisher
+    - PureLayout
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
+  Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  PureLayout: 9b4ad47b2f0388c84ff534af23d96e720c1b875a
+  SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
+
+PODFILE CHECKSUM: 685ab4547e84bfce415ab0a40310aaa76de7a3a7
+
+COCOAPODS: 1.7.5

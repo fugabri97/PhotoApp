@@ -25,28 +25,27 @@ class PhotoListViewController: UIViewController {
         
         AF.request("https://jsonplaceholder.typicode.com/photos", method: .get, encoding:JSONEncoding.default).validate().responseJSON { response in
             guard let data = response.value else { return }
-//            debugPrint(data)
 
             if let error = response.error {
                 debugPrint(error)
             } else {
-
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: data)
-                    let photo: [Photo] = try JSONDecoder().decode([Photo].self, from: jsonData)
-                    print(photo[0])
+                    self.photos = try JSONDecoder().decode([Photo].self, from: jsonData)
+                    self.tableView.reloadData()
                 } catch let jsonError {
                     debugPrint("JSON Parse Error:\(jsonError)")
                 }
-
             }
         }
     }
     
+    // MARK: - TableView Setup
     func configureTableView() {
         view.addSubview(tableView)
         setTableViewDelegates()
         tableView.rowHeight = 100
+        tableView.register(PhotoCell.self, forCellReuseIdentifier: "PhotoCell")
         tableView.autoPinEdge(toSuperviewEdge: .top)
         tableView.autoPinEdge(toSuperviewEdge: .bottom)
         tableView.autoPinEdge(toSuperviewEdge: .trailing)
@@ -62,16 +61,17 @@ class PhotoListViewController: UIViewController {
 
 }
 
-    // MARK: - Table Settings
+    // MARK: - Table Cell count and Photo set
 
 extension PhotoListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return photos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return PhotoCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
+        cell.setCellPhoto(p: photos[indexPath.row])
+        return cell
     }
-    
     
 }

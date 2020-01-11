@@ -11,6 +11,7 @@ import PureLayout
 
 class PhotoCell: UITableViewCell {
     
+    var photo: Photo?;
     var thumbnailImageView = UIImageView.newAutoLayout()
     var thumbnailTitleLabel = UILabel.newAutoLayout()
     
@@ -28,10 +29,17 @@ class PhotoCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public func setCellPhoto(p: Photo) {
+        let imageData = try! Data(contentsOf: p.thumbnailUrl)
+        let image = UIImage(data: imageData)
+        debugPrint(p.id)
+        thumbnailImageView.image = image
+        thumbnailTitleLabel.text = p.title
+    }
+    
     func configureThumbnailImageView() {
         thumbnailImageView.layer.cornerRadius = 5
         thumbnailImageView.clipsToBounds = true
-        thumbnailImageView.backgroundColor = .lightGray
                 
         thumbnailImageView.autoAlignAxis(.horizontal, toSameAxisOf: self)
         thumbnailImageView.autoSetDimension(.height, toSize: 80)
@@ -42,7 +50,6 @@ class PhotoCell: UITableViewCell {
     func configureThumbnailTitleLabel() {
         thumbnailTitleLabel.numberOfLines = 0
         thumbnailTitleLabel.adjustsFontSizeToFitWidth = true
-        thumbnailTitleLabel.text = "Test Label"
         
         thumbnailTitleLabel.autoAlignAxis(.horizontal, toSameAxisOf: self)
         thumbnailTitleLabel.autoPinEdge(.leading, to: .trailing, of: thumbnailImageView, withOffset: 20)
