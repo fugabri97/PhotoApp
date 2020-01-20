@@ -1,5 +1,5 @@
 //
-//  PhotoCell.swift
+//  PostCell.swift
 //  PhotoApp
 //
 //  Created by Felipe Gabriel on 11/01/2020.
@@ -9,9 +9,9 @@
 import UIKit
 import PureLayout
 
-class PhotoCell: UITableViewCell {
+class PostCell: UITableViewCell {
     
-    var photo: Photo?;
+    var photo: Post?;
     var thumbnailImageView = UIImageView.newAutoLayout()
     var thumbnailTitleLabel = UILabel.newAutoLayout()
     
@@ -29,10 +29,9 @@ class PhotoCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setCellPhoto(p: Photo) {
+    public func setCellPhoto(p: Post) {
         let imageData = try! Data(contentsOf: p.thumbnailUrl)
         let image = UIImage(data: imageData)
-        debugPrint(p.id)
         thumbnailImageView.image = image
         thumbnailTitleLabel.text = p.title
     }
