@@ -1,5 +1,5 @@
 //
-//  PostListViewModel.swift
+//  PostDetailsViewModel.swift
 //  PhotoApp
 //
 //  Created by Felipe Gabriel on 23/01/2020.
@@ -8,9 +8,6 @@
 
 import Foundation
 
-class PostListViewModel {
-    var posts: [Post] = []
-        
-    init() {}
+class PostDetailsViewModel {
     
 }

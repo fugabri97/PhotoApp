@@ -1,5 +1,5 @@
 //
-//  PostListViewController.swift
+//  PostsViewController.swift
 //  PhotoApp
 //
 //  Created by Felipe Gabriel on 11/01/2020.
@@ -8,31 +8,27 @@
 
 import UIKit
 import PureLayout
-import Alamofire
 
-class PostListViewController: UIViewController {
-
-    let tableView = UITableView.newAutoLayout()
-    let label = UILabel.newAutoLayout()
-    let dataManager: DataManager = DataManager()
-    var posts: [Post] = []
-    
-    var lastDataLoadedTime: Date? = nil
-    var isOutDatedData = false
+class PostListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    private let tableView = UITableView.newAutoLayout()
+    private let label = UILabel.newAutoLayout()
+    private let dataManager: DataManager = DataManager()
+    private var postCellModels: [PostCellModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        title = "Posts"
+        navigationItem.title = "Posts"
         configureTableView()
+                
         dataManager.posts { posts in
-            self.posts = posts
+            self.postCellModels = posts.map( { return PostCellModel(post: $0) }).sorted { $0.title < $1.title }
             self.tableView.reloadData()
         }
     }
     
-    // MARK: TableView Setup
-    func configureTableView() {
+    //  MARK: TableView Setup
+    private func configureTableView() {
         view.addSubview(tableView)
         setTableViewDelegates()
         tableView.rowHeight = 100
@@ -43,28 +39,27 @@ class PostListViewController: UIViewController {
         tableView.autoPinEdge(toSuperviewEdge: .bottom)
         tableView.autoPinEdge(toSuperviewEdge: .trailing)
         tableView.autoPinEdge(toSuperviewEdge: .leading)
-        
-        let rightUIBarButton = UIBarButtonItem()
-        rightUIBarButton.title = "Delete Posts file"
-        self.navigationItem.rightBarButtonItem = rightUIBarButton
     }
     
-    func setTableViewDelegates() {
+    private func setTableViewDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-}
-//  MARK: TableView Cell settings
-extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let postView = PostViewController()
+        postView.postViewModel = self.postCellModels[indexPath.row]
+        navigationController?.pushViewController(postView, animated: false)
+    }
+    
+    //  MARK: TableView Cell settings
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return postCellModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
-        cell.setCellPhoto(p: posts[indexPath.row])
+        cell.postCellModel = postCellModels[indexPath.row]
         return cell
     }
-    
 }

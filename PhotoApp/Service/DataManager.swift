@@ -13,16 +13,19 @@ class DataManager {
     
     private let defaults = UserDefaults.standard
     
+    //  Creates the destination where the posts should be downloaded to
     private let destinationPostDownload: DownloadRequest.Destination = { _, _ in
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileUrl = documentsURL.appendingPathComponent("posts.txt")
         return (fileUrl, [.removePreviousFile, .createIntermediateDirectories])
     }
     
+    //  MARK: Loading posts data form file or internet
     public func posts(completionHandle: @escaping (_ posts: [Post]) -> ()) {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileUrl = documentsURL.appendingPathComponent("posts.txt")
         
+        //  Looks for a existing posts file to load the data from
         let postsFile: Data? = FileManager.default.contents(atPath: fileUrl.path)
         
         if postsFile != nil && !isFileOutDated() {
@@ -49,6 +52,7 @@ class DataManager {
         }
     }
     
+    //  Checks if the file data is too old
     private func isFileOutDated() -> Bool {
         let lastTimePostsUpdated: Date? = self.defaults.object(forKey: "LastUpdatedPosts") as? Date
         if let lastTime = lastTimePostsUpdated {
