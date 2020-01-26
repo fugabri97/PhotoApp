@@ -13,16 +13,16 @@ class PostCell: UITableViewCell {
     private var thumbnailImageView = UIImageView.newAutoLayout()
     private var thumbnailTitleLabel = UILabel.newAutoLayout()
     
-    public var postCellModel: PostCellModel! {
+    public var postViewModel: PostViewData! {
         didSet {
             do {
-                let imageData = try Data(contentsOf: postCellModel.thumbnailUrl)
+                let imageData = try Data(contentsOf: postViewModel.post.thumbnailUrl)
                 let image = UIImage(data: imageData)
                 thumbnailImageView.image = image
             } catch let error {
                 debugPrint("Error getting contents of the thumbnailUrl \(error)")
             }
-            thumbnailTitleLabel.text = postCellModel.title
+            thumbnailTitleLabel.text = postViewModel.post.title
         }
     }
     

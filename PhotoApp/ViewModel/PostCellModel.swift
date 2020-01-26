@@ -13,7 +13,7 @@ class PostCellModel {
     var thumbnailUrl: URL
     
     init(post: Post) {
-        self.title = post.title
-        self.thumbnailUrl = post.thumbnailUrl
+        title = post.title
+        thumbnailUrl = post.thumbnailUrl
     }
 }

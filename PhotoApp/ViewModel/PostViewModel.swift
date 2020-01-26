@@ -9,6 +9,6 @@
 import Foundation
 
 protocol PostViewModel: CanLoadFromRemote {
-    var post: Post? { get }
+    var post: Post { get }
     var comments: [Comment]? { get }
 }

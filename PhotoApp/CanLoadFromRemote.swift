@@ -9,8 +9,8 @@
 import Foundation
 
 protocol CanLoadFromRemote {
-    var onDidLoadData: (() -> ())? { get set }
-    var onDidFailLoadingData: (() -> ())? { get set }
+    var onDidLoadData: ((Any) -> ())? { get set }
+    var onDidFailLoadingData: ((Error) -> ())? { get set }
     
-    func load(postId: Int)
+    func load()
 }

@@ -21,7 +21,7 @@ class DataManager {
     }
     
     //  MARK: Loading posts data form file or internet
-    public func posts(completionHandle: @escaping (_ posts: [Post]) -> ()) {
+    public func posts(completionHandle: @escaping (_ posts: [Post]?) -> ()) {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileUrl = documentsURL.appendingPathComponent("posts.txt")
         
@@ -44,7 +44,7 @@ class DataManager {
                             self.defaults.set(Date(), forKey: "LastUpdatedPosts")
                             completionHandle(self.parseJSONToPosts(data))
                         } catch let error {
-                            debugPrint("JSON error: \(error)")
+                            debugPrint("JSON serialization error: \(error)")
                         }
                     }
                 }

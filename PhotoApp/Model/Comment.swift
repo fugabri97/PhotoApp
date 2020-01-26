@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Comment {
+struct Comment: Decodable {
     public let postId: Int
     public let id: Int
     public let name: String

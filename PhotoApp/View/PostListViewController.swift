@@ -13,16 +13,18 @@ class PostListViewController: UIViewController, UITableViewDataSource, UITableVi
     private let tableView = UITableView.newAutoLayout()
     private let label = UILabel.newAutoLayout()
     private let dataManager: DataManager = DataManager()
-    private var postCellModels: [PostCellModel] = []
+    private var postViewModels: [PostViewData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         navigationItem.title = "Posts"
         configureTableView()
-                
+
         dataManager.posts { posts in
-            self.postCellModels = posts.map( { return PostCellModel(post: $0) }).sorted { $0.title < $1.title }
+            self.postViewModels = posts?.map({ (post) -> PostViewData in
+                return PostViewData(post: post)
+            }) ?? []
             self.tableView.reloadData()
         }
     }
@@ -48,18 +50,18 @@ class PostListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let postView = PostViewController()
-        postView.postViewModel = self.postCellModels[indexPath.row]
+        postView.postViewModel = self.postViewModels[indexPath.row]
         navigationController?.pushViewController(postView, animated: false)
     }
     
     //  MARK: TableView Cell settings
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postCellModels.count
+        return postViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
-        cell.postCellModel = postCellModels[indexPath.row]
+        cell.postViewModel = postViewModels[indexPath.row]
         return cell
     }
 }
