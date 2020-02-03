@@ -10,7 +10,7 @@ import Foundation
 
 struct Comment: Decodable {
     public let postId: Int
-    public let id: Int
+    public let id: Int // swiftlint:disable:this identifier_name
     public let name: String
     public let email: String
     public let body: String

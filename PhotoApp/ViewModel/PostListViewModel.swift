@@ -8,9 +8,6 @@
 
 import Foundation
 
-class PostListViewModel {
-    var posts: [Post] = []
-        
-    init() {}
-    
+protocol PostListViewModel: CanLoadFromRemote {
+    var posts: [Post]? { get }
 }

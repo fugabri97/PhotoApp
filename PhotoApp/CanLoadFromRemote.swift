@@ -9,8 +9,9 @@
 import Foundation
 
 protocol CanLoadFromRemote {
+    // TODO: - onDidLoadData should return an array of posts or comments
     var onDidLoadData: ((Any) -> ())? { get set }
-    var onDidFailLoadingData: ((Error) -> ())? { get set }
+    var onDidFailLoadingData: ((_ errorMessage: String?) -> ())? { get set }
     
     func load()
 }

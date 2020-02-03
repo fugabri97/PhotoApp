@@ -14,8 +14,17 @@
 		658C75DE23C9CD93000E4B63 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C75DD23C9CD93000E4B63 /* PostListViewController.swift */; };
 		658C75E023C9E7CB000E4B63 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C75DF23C9E7CB000E4B63 /* PostCell.swift */; };
 		658C75E223CA00F5000E4B63 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C75E123CA00F5000E4B63 /* Post.swift */; };
+		65B1EA5023D9C7270039C1A5 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1EA4F23D9C7270039C1A5 /* Comment.swift */; };
+		65B1EA5223D9CA4E0039C1A5 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1EA5123D9CA4E0039C1A5 /* PostListViewModel.swift */; };
+		65B1EA7423D9D88E0039C1A5 /* CanLoadFromRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1EA7323D9D88E0039C1A5 /* CanLoadFromRemote.swift */; };
+		65B1EA7923D9DD9A0039C1A5 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1EA7823D9DD9A0039C1A5 /* PostViewController.swift */; };
+		65B1EA7D23D9F3C60039C1A5 /* PostCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1EA7C23D9F3C60039C1A5 /* PostCellModel.swift */; };
+		65B1EA7F23D9FC660039C1A5 /* PostViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1EA7E23D9FC660039C1A5 /* PostViewData.swift */; };
+		65B1EA8123DDF1D00039C1A5 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1EA8023DDF1D00039C1A5 /* CommentCell.swift */; };
+		65B1EA8323DDF2490039C1A5 /* CommentCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1EA8223DDF2490039C1A5 /* CommentCellModel.swift */; };
+		65F4CCD823E8760200632BBD /* PostListViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4CCD723E8760200632BBD /* PostListViewData.swift */; };
 		65F716A023D5EA8200965DC7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F7169F23D5EA8200965DC7 /* DataManager.swift */; };
-		65F716A623D638F800965DC7 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F716A523D638F800965DC7 /* PostListViewModel.swift */; };
+		65F716A623D638F800965DC7 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F716A523D638F800965DC7 /* PostViewModel.swift */; };
 		9CAA4DEB333BFDA2532AD076 /* Pods_PhotoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1444455108354D844072769D /* Pods_PhotoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,8 +39,17 @@
 		658C75DD23C9CD93000E4B63 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		658C75DF23C9E7CB000E4B63 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		658C75E123CA00F5000E4B63 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		65B1EA4F23D9C7270039C1A5 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		65B1EA5123D9CA4E0039C1A5 /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		65B1EA7323D9D88E0039C1A5 /* CanLoadFromRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanLoadFromRemote.swift; sourceTree = "<group>"; };
+		65B1EA7823D9DD9A0039C1A5 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		65B1EA7C23D9F3C60039C1A5 /* PostCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellModel.swift; sourceTree = "<group>"; };
+		65B1EA7E23D9FC660039C1A5 /* PostViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewData.swift; sourceTree = "<group>"; };
+		65B1EA8023DDF1D00039C1A5 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		65B1EA8223DDF2490039C1A5 /* CommentCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellModel.swift; sourceTree = "<group>"; };
+		65F4CCD723E8760200632BBD /* PostListViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewData.swift; sourceTree = "<group>"; };
 		65F7169F23D5EA8200965DC7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		65F716A523D638F800965DC7 /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		65F716A523D638F800965DC7 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		6ACEBE0C779DC72ED19BEC01 /* Pods-PhotoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoApp.debug.xcconfig"; path = "Target Support Files/Pods-PhotoApp/Pods-PhotoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D2BF6AB7B1719D6A0FB64686 /* Pods-PhotoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoApp.release.xcconfig"; path = "Target Support Files/Pods-PhotoApp/Pods-PhotoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +95,7 @@
 		658C75C723C9C6D3000E4B63 /* PhotoApp */ = {
 			isa = PBXGroup;
 			children = (
+				65B1EA7523D9DBC90039C1A5 /* Data */,
 				658C75DC23C9CBBF000E4B63 /* Model */,
 				65F716A323D6389C00965DC7 /* View */,
 				65F716A223D6388300965DC7 /* ViewModel */,
@@ -86,8 +105,7 @@
 				658C75D123C9C6D5000E4B63 /* Assets.xcassets */,
 				658C75D323C9C6D5000E4B63 /* LaunchScreen.storyboard */,
 				658C75D623C9C6D5000E4B63 /* Info.plist */,
-				658C75DD23C9CD93000E4B63 /* PostListViewController.swift */,
-				658C75DF23C9E7CB000E4B63 /* PostCell.swift */,
+				65B1EA7323D9D88E0039C1A5 /* CanLoadFromRemote.swift */,
 			);
 			path = PhotoApp;
 			sourceTree = "<group>";
@@ -96,14 +114,27 @@
 			isa = PBXGroup;
 			children = (
 				658C75E123CA00F5000E4B63 /* Post.swift */,
+				65B1EA4F23D9C7270039C1A5 /* Comment.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		65B1EA7523D9DBC90039C1A5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				65B1EA7E23D9FC660039C1A5 /* PostViewData.swift */,
+				65F4CCD723E8760200632BBD /* PostListViewData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		65F716A223D6388300965DC7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				65F716A523D638F800965DC7 /* PostListViewModel.swift */,
+				65B1EA7C23D9F3C60039C1A5 /* PostCellModel.swift */,
+				65B1EA8223DDF2490039C1A5 /* CommentCellModel.swift */,
+				65F716A523D638F800965DC7 /* PostViewModel.swift */,
+				65B1EA5123D9CA4E0039C1A5 /* PostListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -111,6 +142,10 @@
 		65F716A323D6389C00965DC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				658C75DD23C9CD93000E4B63 /* PostListViewController.swift */,
+				65B1EA7823D9DD9A0039C1A5 /* PostViewController.swift */,
+				658C75DF23C9E7CB000E4B63 /* PostCell.swift */,
+				65B1EA8023DDF1D00039C1A5 /* CommentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,6 +179,7 @@
 				658C75C223C9C6D3000E4B63 /* Frameworks */,
 				658C75C323C9C6D3000E4B63 /* Resources */,
 				372BA474B3F87B460C32A7A2 /* [CP] Embed Pods Frameworks */,
+				65FA3A9923E866DC002ADB69 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -166,6 +202,7 @@
 				TargetAttributes = {
 					658C75C423C9C6D3000E4B63 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -239,6 +276,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		65FA3A9923E866DC002ADB69 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -246,13 +300,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F716A623D638F800965DC7 /* PostListViewModel.swift in Sources */,
+				65F716A623D638F800965DC7 /* PostViewModel.swift in Sources */,
 				658C75E023C9E7CB000E4B63 /* PostCell.swift in Sources */,
+				65B1EA5223D9CA4E0039C1A5 /* PostListViewModel.swift in Sources */,
 				65F716A023D5EA8200965DC7 /* DataManager.swift in Sources */,
+				65B1EA7D23D9F3C60039C1A5 /* PostCellModel.swift in Sources */,
+				65B1EA5023D9C7270039C1A5 /* Comment.swift in Sources */,
 				658C75DE23C9CD93000E4B63 /* PostListViewController.swift in Sources */,
+				65B1EA7423D9D88E0039C1A5 /* CanLoadFromRemote.swift in Sources */,
+				65F4CCD823E8760200632BBD /* PostListViewData.swift in Sources */,
+				65B1EA8323DDF2490039C1A5 /* CommentCellModel.swift in Sources */,
 				658C75C923C9C6D3000E4B63 /* AppDelegate.swift in Sources */,
+				65B1EA7923D9DD9A0039C1A5 /* PostViewController.swift in Sources */,
 				658C75CB23C9C6D3000E4B63 /* SceneDelegate.swift in Sources */,
+				65B1EA7F23D9FC660039C1A5 /* PostViewData.swift in Sources */,
 				658C75E223CA00F5000E4B63 /* Post.swift in Sources */,
+				65B1EA8123DDF1D00039C1A5 /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +452,7 @@
 			baseConfigurationReference = 6ACEBE0C779DC72ED19BEC01 /* Pods-PhotoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6JTBWVZS3T;
 				INFOPLIST_FILE = PhotoApp/Info.plist;
@@ -398,6 +462,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fugabri.PhotoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -408,6 +473,7 @@
 			baseConfigurationReference = D2BF6AB7B1719D6A0FB64686 /* Pods-PhotoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6JTBWVZS3T;
 				INFOPLIST_FILE = PhotoApp/Info.plist;
