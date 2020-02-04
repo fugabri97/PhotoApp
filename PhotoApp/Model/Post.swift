@@ -9,9 +9,9 @@
 import Foundation
 
 struct Post: Decodable {
-    let id: Int
-    let albumId: Int
-    let title: String
-    let url: URL
-    let thumbnailUrl: URL
+    public let id: Int // swiftlint:disable:this identifier_name
+    public let albumId: Int
+    public let title: String
+    public let url: URL
+    public let thumbnailUrl: URL
 }
