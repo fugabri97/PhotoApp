@@ -13,8 +13,7 @@ class PostCell: UITableViewCell {
     private var thumbnailImageView = UIImageView.newAutoLayout()
     private var thumbnailTitleLabel = UILabel.newAutoLayout()
     
-    public var postViewModel: PostViewData! {
-        didSet {
+    public var postViewModel: PostViewData! {didSet {
             do {
                 let imageData = try Data(contentsOf: postViewModel.post.thumbnailUrl)
                 let image = UIImage(data: imageData)
@@ -44,11 +43,12 @@ class PostCell: UITableViewCell {
         thumbnailImageView.autoPinEdge(.leading, to: .leading, of: self, withOffset: 20)
     }
     private func configureThumbnailTitleLabel() {
-        thumbnailTitleLabel.numberOfLines = 0
+        thumbnailTitleLabel.numberOfLines = 3
         thumbnailTitleLabel.adjustsFontSizeToFitWidth = true
+        thumbnailTitleLabel.minimumScaleFactor = 0.7
         thumbnailTitleLabel.autoAlignAxis(.horizontal, toSameAxisOf: self)
         thumbnailTitleLabel.autoPinEdge(.leading, to: .trailing, of: thumbnailImageView, withOffset: 20)
-        thumbnailTitleLabel.autoPinEdge(.trailing, to: .trailing, of: self, withOffset: 20)
+        thumbnailTitleLabel.autoPinEdge(.trailing, to: .trailing, of: self, withOffset: -20)
         thumbnailTitleLabel.autoSetDimension(.height, toSize: 80)
     }
 }

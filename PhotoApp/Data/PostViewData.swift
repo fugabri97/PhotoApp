@@ -9,13 +9,13 @@
 import Foundation
 import Alamofire
 
-struct PostViewData: PostViewModel {
+class PostViewData: PostViewModel {
     var post: Post
-    var comments: [Comment]?
+    var commentsCellModels: [CommentCellModel]?
     init(post: Post) {
         self.post = post
     }
-    var onDidLoadData: ((Any) -> Void)?
+    var onDidLoadData: (() -> Void)?
     var onDidFailLoadingData: ((_ errorMessage: String?) -> Void)?
     func load() {
         DataManager.shared.comments(postId: post.id) { (comments, error) in
@@ -24,7 +24,8 @@ struct PostViewData: PostViewModel {
                 self.onDidFailLoadingData?(error!)
                 return
             }
-            self.onDidLoadData?(comments as Any)
+            self.commentsCellModels = comments!.map({ return CommentCellModel(comment: $0) })
+            self.onDidLoadData?()
         }
     }
 }

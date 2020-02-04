@@ -6,15 +6,16 @@
 //  Copyright © 2020 Felipe Gabriel. All rights reserved.
 //
 
+// TODO: Remove public
+
 import UIKit
 
 class CommentCell: UITableViewCell {
-    private let emailLabel: UILabel = UILabel.newAutoLayout()
-    private let commentLabel: UILabel = UILabel.newAutoLayout()
+    private let emailLabel: UILabel = UILabel()
+    private let commentLabel: UILabel = UILabel()
     
-    public var commentCellModel: CommentCellModel! {
+    var commentCellModel: CommentCellModel! {
         didSet {
-            debugPrint(commentCellModel.comment.email)
             emailLabel.text = "\(commentCellModel.comment.email):"
             commentLabel.text = commentCellModel.comment.body
         }
@@ -26,7 +27,6 @@ class CommentCell: UITableViewCell {
         addSubview(commentLabel)
         emailLabelSetup()
         commentLabelSetup()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -34,20 +34,21 @@ class CommentCell: UITableViewCell {
     }
     
     private func emailLabelSetup() {
+        emailLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         emailLabel.adjustsFontSizeToFitWidth = true
-        emailLabel.autoPinEdge(toSuperviewMargin: .leading, withInset: 2)
         emailLabel.autoPinEdge(.top, to: .top, of: self)
+        emailLabel.autoPinEdge(.leading, to: .leading, of: self)
         emailLabel.autoPinEdge(.trailing, to: .trailing, of: self)
-        emailLabel.autoPinEdge(.bottom, to: .top, of: commentLabel)
     }
     
     private func commentLabelSetup() {
+        commentLabel.font = UIFont.preferredFont(forTextStyle: .body)
         commentLabel.adjustsFontSizeToFitWidth = false
-        commentLabel.numberOfLines = .bitWidth
-        commentLabel.autoPinEdge(toSuperviewMargin: .leading, withInset: 10)
+        commentLabel.lineBreakMode = .byTruncatingTail
+        commentLabel.numberOfLines = 0
         commentLabel.autoPinEdge(.top, to: .bottom, of: emailLabel)
+        commentLabel.autoPinEdge(.leading, to: .leading, of: self, withOffset: 20)
         commentLabel.autoPinEdge(.trailing, to: .trailing, of: self)
-//        commentLabel.autoPinEdge(.leading, to: .leading, of: self)
-        commentLabel.autoPinEdge(.bottom, to: .bottom, of: self)
+        commentLabel.autoPinEdge(.bottom, to: .bottom, of: self, withOffset: -20)
     }
 }

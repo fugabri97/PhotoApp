@@ -20,24 +20,36 @@ class DataManager {
         let fileUrl = documentsURL.appendingPathComponent("posts.txt")
         return (fileUrl, [.removePreviousFile, .createIntermediateDirectories])
     }
-    
-    // MARK: - Data requests
-    public func posts(completionHandler: @escaping (_ posts: [Post]?, _ errorMessage: String?) -> Void) {
+    public func getLocalPostsFile() -> Data? {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileUrl = documentsURL.appendingPathComponent("posts.txt")
         
         // Looks for a existing posts file to load the data from
         let postsFile: Data? = FileManager.default.contents(atPath: fileUrl.path)
-        
-        if postsFile != nil && !isFileOutDated() {
+        return postsFile
+    }
+    public func deleteLocalPostsFile() {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileUrl = documentsURL.appendingPathComponent("posts.txt")
+        do {
+            try FileManager.default.removeItem(at: fileUrl)
+            debugPrint("Local File deleted")
+        } catch let error {
+            debugPrint(error)
+        }
+    }
+    // MARK: - Data requests
+    public func posts(completionHandler: @escaping (_ posts: [Post]?, _ errorMessage: String?) -> Void) {
+        if getLocalPostsFile() != nil && !isFileOutDated() {
             debugPrint("Load from file")
-            completionHandler(parseJSONToPosts(postsFile!), nil)
+            completionHandler(parseJSONToPosts(getLocalPostsFile()!), nil)
         } else {
             // Does a Http request for the posts
-            AF.download("https://jsonplaceholder.typicode.com/photos", to: destinationPostDownload).responseJSON { response in
+            AF.download("https://jsonplaceholder.typicode.com/photos?_page=1&_limit=20", to: destinationPostDownload).responseJSON { response in
                 debugPrint("Load from get request")
                 if let error = response.error {
-                    debugPrint(error)
+                    debugPrint("RESPONSE ERROR!")
+                    debugPrint(error.errorDescription as Any)
                 } else {
                     if let jsonData = response.value {
                         do {
@@ -56,7 +68,7 @@ class DataManager {
     
     public func comments(postId: Int, completionHandler: @escaping (_ commenets: [Comment]?, _ errorMessage: String?) -> Void) {
         AF.request(
-            "https://jsonplaceholder.typicode.com/photos/%7Bid%7D/comments?postId=\(postId)",
+            "https://jsonplaceholder.typicode.com/photos/%7Bid%7D/comments?postId=\(postId)&_limit=20",
             method: .get
         ).responseJSON { response in
             if let error = response.error {

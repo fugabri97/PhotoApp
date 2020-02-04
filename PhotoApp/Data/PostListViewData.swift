@@ -6,11 +6,15 @@
 //  Copyright © 2020 Felipe Gabriel. All rights reserved.
 //
 
+// TODO: - Set to class
+
 import Foundation
 
-struct PostListViewData: PostListViewModel {
+class PostListViewData: PostListViewModel {
     var posts: [Post]?
-    var onDidLoadData: ((Any) -> ())?
+    
+    var postsViewModels: [PostViewData] = []
+    var onDidLoadData: (() -> ())?
     var onDidFailLoadingData: ((_ errorMessage: String?) -> ())?
     
     func load() {
@@ -20,8 +24,8 @@ struct PostListViewData: PostListViewModel {
                 self.onDidFailLoadingData?(error)
                 return
             }
-            self.onDidFailLoadingData?(error)
-            self.onDidLoadData?(posts as Any)
+            self.postsViewModels = posts!.sorted(by: { $0.title < $1.title }).map({ return PostViewData(post: $0) })
+            self.onDidLoadData?()
         }
     }
 }

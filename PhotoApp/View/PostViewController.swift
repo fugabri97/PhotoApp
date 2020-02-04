@@ -7,29 +7,27 @@
 //
 
 import UIKit
-import PureLayout
 
 class PostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private let imageView: UIImageView = UIImageView.newAutoLayout()
-    private let titleLabel: UILabel = UILabel.newAutoLayout()
     private let commenstTableView: UITableView = UITableView.newAutoLayout()
-    private var commentModels: [CommentCellModel] = []
-    public var postViewModel: PostViewData! {
+    private var commentCellModels: [CommentCellModel] = []
+    public var postViewData: PostViewData! {
         didSet {
             do {
-                let imageData = try Data(contentsOf: postViewModel.post.url)
+                let imageData = try Data(contentsOf: postViewData.post.url)
                 let image = UIImage.init(data: imageData)
                 imageView.image = image
             } catch let error {
                 debugPrint(error)
             }
-            titleLabel.text = postViewModel.post.title
-            postViewModel.onDidLoadData = { comments in
-                let commentArray: [Comment] = comments as! [Comment]
-                self.commentModels = commentArray.map({ return CommentCellModel(comment: $0) })
+            title = postViewData.post.title
+            // TODO: - Do the casting in the ViewModel
+            postViewData.onDidLoadData = {
+                self.commentCellModels = self.postViewData.commentsCellModels!
                 self.commenstTableView.reloadData()
             }
-            self.postViewModel.load()
+            self.postViewData.load()
         }
     }
     init() {
@@ -40,43 +38,39 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         imageViewSetup()
-        titleLabelSetup()
         commenstTableViewSetUp()
     }
+    // MARK: - UI setup
     private func imageViewSetup() {
         view.addSubview(imageView)
         imageView.autoPinEdge(.leading, to: .leading, of: view)
         imageView.autoPinEdge(.trailing, to: .trailing, of: view)
         imageView.autoPinEdge(toSuperviewSafeArea: .top)
         imageView.autoSetDimension(.height, toSize: 400)
-        imageView.backgroundColor = .red
-    }
-    private func titleLabelSetup() {
-        view.addSubview(titleLabel)
-        titleLabel.autoPinEdge(.top, to: .bottom, of: imageView)
-        titleLabel.autoPinEdge(.trailing, to: .trailing, of: view)
-        titleLabel.autoPinEdge(.leading, to: .leading, of: view)
-        titleLabel.autoSetDimension(.height, toSize: 50)
     }
     private func commenstTableViewSetUp() {
         view.addSubview(commenstTableView)
-        commenstTableView.autoPinEdge(.top, to: .bottom, of: titleLabel)
-        commenstTableView.autoPinEdge(.leading, to: .leading, of: view)
-        commenstTableView.autoPinEdge(.trailing, to: .trailing, of: view)
-        commenstTableView.autoPinEdge(toSuperviewEdge: .bottom)
         commenstTableView.register(CommentCell.self, forCellReuseIdentifier: "CommentCell")
         commenstTableView.separatorStyle = .none
         commenstTableView.delegate = self
         commenstTableView.dataSource = self
+        commenstTableView.estimatedRowHeight = 50
+        commenstTableView.rowHeight = UITableView.automaticDimension
+        commenstTableView.autoPinEdge(.top, to: .bottom, of: imageView, withOffset: 20)
+        commenstTableView.autoPinEdge(.leading, to: .leading, of: view, withOffset: 20)
+        commenstTableView.autoPinEdge(.trailing, to: .trailing, of: view, withOffset: -20)
+        commenstTableView.autoPinEdge(toSuperviewSafeArea: .bottom)
+
     }
+    // MARK: - Comments tableView cells setup
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commentModels.count
+        return commentCellModels.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as? CommentCell
-        cell?.commentCellModel = commentModels[indexPath.row]
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
+        cell.commentCellModel = commentCellModels[indexPath.row]
+        return cell
     }
 }
